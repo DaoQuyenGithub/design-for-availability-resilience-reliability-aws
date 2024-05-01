@@ -1,0 +1,38 @@
+Last login: Sun Mar 31 16:11:06 on ttys004
+quyendao@Quyens-MacBook-Pro Downloads % ssh -i "udacity-secondary.pem" ec2-user@ec2-35-91-158-161.us-west-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Mar 31 09:10:45 2024 from 113.176.61.121
+[ec2-user@ip-10-2-10-91 ~]$ mysql -h database-udacity-sencondary.c7sqzx7twjcb.us-west-2.rds.amazonaws.com -u admin -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> use udacity;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> insert into TEST (RENTAL_ID, INVENTORY_ID, CUSTOMER_ID, STAFF_ID) values (3,4,4, 3);
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [udacity]> select * from TEST;
++-----------+--------------+-------------+----------+
+| RENTAL_ID | INVENTORY_ID | CUSTOMER_ID | STAFF_ID |
++-----------+--------------+-------------+----------+
+|         3 |            4 |           4 |        3 |
++-----------+--------------+-------------+----------+
+1 row in set (0.001 sec)
+

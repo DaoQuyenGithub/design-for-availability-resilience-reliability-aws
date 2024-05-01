@@ -1,0 +1,26 @@
+1. Minimum RTO for a single AZ outage
+In AWS Documentation said: "Amazon RDS automatically switches to a standby replica in another Availability Zone if you have 
+turned on Multi-AZ. The time that it takes for the failover to complete depends on the database 
+activity and other conditions at the time the primary DB instance became unavailable. Failover times are typically 60–120 seconds"
+-> RTO switches to a standby replica in another Availability Zone if the failover times are typically 60–120 seconds. 
+So Minimum RTO for a single AZ outage around 60 seconds.
+
+
+2. Minimum RTO for a single region outage
+00:00 - Problem happens (0 minutes)
+00:05 - An amount of time passes before an alert triggers (5 minutes)
+00:06 - Alert triggers on-all staff (1 minute)
+00:16 - On-call staff get out of bed, get to computer, log in (10 minutes)
+00:31 - Use existing replica and promote to master (15 minutes)
+00:45 - Reconfigure the application to point to new DB instance (4 minutes)
+-> Total time: 45 minutes
+Minimum RTO for a single region outage around 45 minutes. 
+
+3. Minimum RPO for a single AZ outage
+RDS takes transaction log backups every 5 minutes. At the most data loss will be of 5 minutes.
+-> Minimum RPO for a single AZ outage is 5 minutes
+
+4. Minimum RPO for a single region outage
+Read replica are almost sync data with the Primary database. So we can consider at most the RPO can be ±10 mins.
+-> Minimum RPO for a single region outage is 10 minutes
+

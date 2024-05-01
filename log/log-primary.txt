@@ -1,0 +1,47 @@
+Last login: Sun Mar 31 16:10:54 on ttys004
+quyendao@Quyens-MacBook-Pro Downloads % ssh -i "udacity.pem" ec2-user@ec2-18-207-103-32.compute-1.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Mar 31 08:39:34 2024 from 113.176.61.121
+[ec2-user@ip-10-1-10-249 ~]$ mysql -h database-udacity.cwrtbak5ejff.us-east-1.rds.amazonaws.com -u admin -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 29
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> use udacity;
+Database changed
+MySQL [udacity]> CREATE TABLE TEST (
+    -> RENTAL_ID INT,
+    -> INVENTORY_ID INT,
+    -> CUSTOMER_ID INT,
+    -> STAFF_ID INT
+    -> );
+Query OK, 0 rows affected (0.034 sec)
+
+MySQL [udacity]> insert into TEST (RENTAL_ID, INVENTORY_ID, CUSTOMER_ID, STAFF_ID) values (3,4,4, 3);
+Query OK, 1 row affected (0.007 sec)
+
+MySQL [udacity]> select * from test;
+ERROR 1146 (42S02): Table 'udacity.test' doesn't exist
+MySQL [udacity]> select * from TEST;
++-----------+--------------+-------------+----------+
+| RENTAL_ID | INVENTORY_ID | CUSTOMER_ID | STAFF_ID |
++-----------+--------------+-------------+----------+
+|         3 |            4 |           4 |        3 |
++-----------+--------------+-------------+----------+
+1 row in set (0.001 sec)
+
+MySQL [udacity]> 
